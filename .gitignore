@@ -1,0 +1,21 @@
+# Contenu des dossiers de travail — non versionné
+A traiter/*
+Vidéos/*
+
+# Conserver les dossiers vides
+!A traiter/.gitkeep
+!Vidéos/.gitkeep
+
+# Fichiers vidéo et image (au cas où)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wmv
+*.flv
+*.webm
+*.m4v
+*.jpg
+*.jpeg
+*.png
+*.gif
