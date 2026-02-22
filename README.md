@@ -26,10 +26,12 @@ Final Frames/
 ## Lancement
 
 ```bash
+# Surveille en continu — s'arrête avec Ctrl+C
 python process_videos.py
-```
 
-Le script surveille `A traiter/` toutes les 5 secondes et traite automatiquement toute nouvelle vidéo détectée. Arrêt avec `Ctrl+C`.
+# Traite tout ce qui est dans "A traiter" et s'arrête
+python process_videos.py --once
+```
 
 ## Formats supportés
 
