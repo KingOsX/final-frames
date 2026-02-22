@@ -104,20 +104,29 @@ def scan_and_process():
         process_video(os.path.join(INPUT_DIR, video_file))
 
 def main():
+    import sys
+    once = "--once" in sys.argv
+
     os.makedirs(INPUT_DIR,  exist_ok=True)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    log("🚀 Démarrage — surveillance de 'A traiter' (Ctrl+C pour arrêter)")
-    log(f"   Dossier source  : {INPUT_DIR}")
-    log(f"   Dossier sortie  : {OUTPUT_DIR}")
-    log(f"   Vérification toutes les {POLL_DELAY}s\n")
-
-    try:
-        while True:
-            scan_and_process()
-            time.sleep(POLL_DELAY)
-    except KeyboardInterrupt:
-        log("\n👋 Arrêt du script.")
+    if once:
+        log("⚡ Mode one-shot — traitement en cours...")
+        log(f"   Dossier source : {INPUT_DIR}")
+        log(f"   Dossier sortie : {OUTPUT_DIR}\n")
+        scan_and_process()
+        log("✅ Terminé.")
+    else:
+        log("🚀 Démarrage — surveillance de 'A traiter' (Ctrl+C pour arrêter)")
+        log(f"   Dossier source  : {INPUT_DIR}")
+        log(f"   Dossier sortie  : {OUTPUT_DIR}")
+        log(f"   Vérification toutes les {POLL_DELAY}s\n")
+        try:
+            while True:
+                scan_and_process()
+                time.sleep(POLL_DELAY)
+        except KeyboardInterrupt:
+            log("\n👋 Arrêt du script.")
 
 if __name__ == "__main__":
     main()
